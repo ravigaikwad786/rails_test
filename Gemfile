@@ -70,3 +70,5 @@ group :test do
 end
 
 gem 'faker', "2.21.0"
+gem 'will_paginate', "3.3.1"
+gem 'bootstrap-will_paginate'

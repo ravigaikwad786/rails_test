@@ -8,7 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create!(name: "Example User", email: "example@railstutorial.org", password: "foobar", password_confirmation: "foobar")
+User.create!(name: "Example User", email: "example@railstutorial.org", password: "foobar", password_confirmation: "foobar", admin: true)
 
 99.times do |n|
   name = Faker::Name.name
@@ -19,4 +19,10 @@ User.create!(name: "Example User", email: "example@railstutorial.org", password:
     email: email,
     password: password,
     password_confirmation: password)
+end
+users = User.order(:created_at).take(6)
+
+50.times do
+  content = Faker::Lorem.sentence(word_count: 5)
+  users.each { |user| user.microposts.create!(content: content) }
 end
